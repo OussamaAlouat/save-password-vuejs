@@ -27,7 +27,7 @@
                             label="Password"
                             align="center">
                         <template slot-scope="scope">
-                            <template v-if="isVisible">
+                            <template v-if="scope.row.visibility">
                                 {{scope.row.password}}
                             </template>
                             <template v-else>
@@ -50,7 +50,7 @@
                     <el-table-column
                             width="180">
                         <template slot-scope="scope">
-                            <el-button icon="el-icon-edit" type="primary" circle @click="getView(scope.row)"></el-button>
+                            <el-button icon="el-icon-view" type="primary" circle @click="getView(scope.row)"></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -73,12 +73,12 @@
             <el-button @click="addKey()" style="margin-top: 2%; margin-bottom: 1%;" icon="el-icon-circle-plus">Add key
             </el-button>
         </div>
+
     </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
-
 export default {
   name: 'SecureStorage',
   computed: {
@@ -151,10 +151,7 @@ export default {
       return asterisk
     },
     getView: function (item) {
-
-    },
-    startData: function () {
-      // read file
+      item.visibility = !item.visibility
     }
   }
 }
