@@ -1,0 +1,11 @@
+[
+  {
+    "label": "Facebook",
+    "img": "./assets/face.png"
+  },
+  {
+    "label": "Gmail",
+    "img" : "./assets/gmail.png"
+  },
+
+]
