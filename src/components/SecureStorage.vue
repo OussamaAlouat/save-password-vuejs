@@ -14,8 +14,7 @@
                 <el-table
                         :data="keys"
                         style="width: 100%; text-align: center;"
-                        header-align="center"
-                >
+                        header-align="center">
                     <el-table-column
                             label="Type"
                             align="center">
@@ -35,22 +34,17 @@
                             </template>
                         </template>
                     </el-table-column>
-                    <el-table-column
-                            label="Logo"
-                            align="center">
-                        <template slot-scope="scope">
-                            <img :src="scope.row.img"/>
-                        </template>
-                    </el-table-column>
                     <el-table-column>
                         <template slot-scope="scope">
-                            <el-button icon="el-icon-delete" type="danger" circle @click="removeKey(scope.row)"></el-button>
+                            <el-button icon="el-icon-delete" type="danger" circle
+                                       @click="removeKey(scope.row)"></el-button>
                         </template>
                     </el-table-column>
                     <el-table-column
                             width="180">
                         <template slot-scope="scope">
-                            <el-button icon="el-icon-view" type="primary" circle @click="getView(scope.row)"></el-button>
+                            <el-button icon="el-icon-view" type="primary" circle
+                                       @click="getView(scope.row)"></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -79,6 +73,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
+
 export default {
   name: 'SecureStorage',
   computed: {
@@ -87,9 +82,6 @@ export default {
     }),
     isEmpty: function () {
       return this.keys.length === 0
-    },
-    isVisible: function () {
-      return this.visible
     }
   },
   data: function () {
@@ -98,30 +90,12 @@ export default {
       key: '',
       type: '',
       types: [
-        {
-          value: 'tw',
-          label: 'Twitter'
-        },
-        {
-          value: 'gm',
-          label: 'Gmail'
-        },
-        {
-          value: 'fb',
-          label: 'Facebook'
-        },
-        {
-          value: 'sk',
-          label: 'Skype'
-        },
-        {
-          value: 'ht',
-          label: 'Hot Mail'
-        },
-        {
-          value: 'inst',
-          label: 'Instagram'
-        }
+        {label: 'Twitter'},
+        {label: 'Gmail'},
+        {label: 'Facebook'},
+        {label: 'Skype'},
+        {label: 'HotMail'},
+        {label: 'Instagram'}
       ],
       asterisk: []
     }
