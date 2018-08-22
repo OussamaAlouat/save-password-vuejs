@@ -34,13 +34,6 @@
                             </template>
                         </template>
                     </el-table-column>
-                    <el-table-column
-                            label="Logo"
-                            align="center">
-                        <template slot-scope="scope">
-                            <img :src="getImg(scope.row.type)"/>
-                        </template>
-                    </el-table-column>
                     <el-table-column>
                         <template slot-scope="scope">
                             <el-button icon="el-icon-delete" type="danger" circle
@@ -97,24 +90,12 @@ export default {
       key: '',
       type: '',
       types: [
-        {
-          label: 'Twitter'
-        },
-        {
-          label: 'Gmail'
-        },
-        {
-          label: 'Facebook'
-        },
-        {
-          label: 'Skype'
-        },
-        {
-          label: 'Hot Mail'
-        },
-        {
-          label: 'Instagram'
-        }
+        {label: 'Twitter'},
+        {label: 'Gmail'},
+        {label: 'Facebook'},
+        {label: 'Skype'},
+        {label: 'HotMail'},
+        {label: 'Instagram'}
       ],
       asterisk: []
     }
@@ -145,16 +126,6 @@ export default {
     },
     getView: function (item) {
       item.visibility = !item.visibility
-    },
-    getImg: function (type) {
-      switch (type) {
-        case 'Facebook':
-          return '../assets/face.png'
-        case 'Twitter':
-          return '../assets/twit.png'
-        case 'Gmail':
-          return '../assets/gmail.png'
-      }
     }
   }
 }
