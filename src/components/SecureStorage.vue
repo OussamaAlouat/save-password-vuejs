@@ -39,18 +39,20 @@
                             label="Logo"
                             align="center">
                         <template slot-scope="scope">
-                            <img :src="scope.row.img"/>
+                            <img :src="getImg(scope.row.type)"/>
                         </template>
                     </el-table-column>
                     <el-table-column>
                         <template slot-scope="scope">
-                            <el-button icon="el-icon-delete" type="danger" circle @click="removeKey(scope.row)"></el-button>
+                            <el-button icon="el-icon-delete" type="danger" circle
+                                       @click="removeKey(scope.row)"></el-button>
                         </template>
                     </el-table-column>
                     <el-table-column
                             width="180">
                         <template slot-scope="scope">
-                            <el-button icon="el-icon-view" type="primary" circle @click="getView(scope.row)"></el-button>
+                            <el-button icon="el-icon-view" type="primary" circle
+                                       @click="getView(scope.row)"></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -79,6 +81,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
+
 export default {
   name: 'SecureStorage',
   computed: {
@@ -87,9 +90,6 @@ export default {
     }),
     isEmpty: function () {
       return this.keys.length === 0
-    },
-    isVisible: function () {
-      return this.visible
     }
   },
   data: function () {
@@ -99,27 +99,21 @@ export default {
       type: '',
       types: [
         {
-          value: 'tw',
           label: 'Twitter'
         },
         {
-          value: 'gm',
           label: 'Gmail'
         },
         {
-          value: 'fb',
           label: 'Facebook'
         },
         {
-          value: 'sk',
           label: 'Skype'
         },
         {
-          value: 'ht',
           label: 'Hot Mail'
         },
         {
-          value: 'inst',
           label: 'Instagram'
         }
       ],
@@ -152,6 +146,16 @@ export default {
     },
     getView: function (item) {
       item.visibility = !item.visibility
+    },
+    getImg: function (type) {
+      switch (type) {
+        case 'Facebook':
+          return './../assets/face.png'
+        case 'Twitter':
+          return './../assets/twit.png'
+        case 'Gmail':
+          return './../assets/gmail.png'
+      }
     }
   }
 }
