@@ -1,4 +1,5 @@
 # SAVE-PASSWORD-VUEJS
+The project is dedicated to practice and use vuejs frmework with vuex and Element.io component library.
 
 ## Project setup
 ```
