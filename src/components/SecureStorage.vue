@@ -14,8 +14,7 @@
                 <el-table
                         :data="keys"
                         style="width: 100%; text-align: center;"
-                        header-align="center"
-                >
+                        header-align="center">
                     <el-table-column
                             label="Type"
                             align="center">
@@ -150,11 +149,11 @@ export default {
     getImg: function (type) {
       switch (type) {
         case 'Facebook':
-          return './../assets/face.png'
+          return '../assets/face.png'
         case 'Twitter':
-          return './../assets/twit.png'
+          return '../assets/twit.png'
         case 'Gmail':
-          return './../assets/gmail.png'
+          return '../assets/gmail.png'
       }
     }
   }
