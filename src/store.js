@@ -11,7 +11,7 @@ export default new Vuex.Store({
       Vue.set(state.keys, state.keys.length, {password: data.key, type: data.type, visibility: false})
     },
     removeKey (state, key) {
-      const keys = state.keys.filter((val) => val.password !== key.password && val.type !== key.type)
+      const keys = state.keys.filter((val) => val.password !== key.password || val.type !== key.type)
       state.keys = keys.slice()
     }
   },

@@ -68,7 +68,7 @@
                     </el-select>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6">
-                    <el-input v-model="key" size="small" type="text" style="width: 75%">Insert your key here</el-input>
+                    <el-input v-model="key" size="small" type="password" style="width: 75%">Insert your password here</el-input>
                 </el-col>
             </el-row>
             <el-button @click="addKey()" style="margin-top: 2%; margin-bottom: 1%;" icon="el-icon-circle-plus">Add key
@@ -118,7 +118,7 @@ export default {
         this.$store.commit('setKey', {key: this.key, type: this.type})
         this.key = ''
         this.type = ''
-        this.valid === false ? this.valid = true : ''
+        this.valid = true
       } else {
         this.valid = false
       }
