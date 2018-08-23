@@ -8,13 +8,21 @@
                     center="">
             </el-alert>
         </div>
+        <div v-if="isInvalid">
+            <el-alert
+                    title="Please insert the type and the password"
+                    type="error"
+                    show-icon
+                    center="">
+            </el-alert>
+        </div>
         <div class="dropbox">
             <h1>Your passwords</h1>
             <div v-if="!isEmpty" class="table-box">
                 <el-table
                         :data="keys"
-                        style="width: 100%; text-align: center;"
-                        header-align="center">
+                        style="text-align: center;"
+                        header-align="center" width="auto">
                     <el-table-column
                             label="Type"
                             align="center">
@@ -34,14 +42,13 @@
                             </template>
                         </template>
                     </el-table-column>
-                    <el-table-column>
+                    <el-table-column >
                         <template slot-scope="scope">
                             <el-button icon="el-icon-delete" type="danger" circle
                                        @click="removeKey(scope.row)"></el-button>
                         </template>
                     </el-table-column>
-                    <el-table-column
-                            width="180">
+                    <el-table-column>
                         <template slot-scope="scope">
                             <el-button icon="el-icon-view" type="primary" circle
                                        @click="getView(scope.row)"></el-button>
@@ -54,9 +61,9 @@
                     <el-select v-model="type" size="small" style="width: 75%">
                         <el-option
                                 v-for="item in types"
-                                :key="item.label"
-                                :label="item.label"
-                                :value="item.label">
+                                :key="item.value"
+                                :label="item.value"
+                                :value="item.value">
                         </el-option>
                     </el-select>
                 </el-col>
@@ -82,6 +89,9 @@ export default {
     }),
     isEmpty: function () {
       return this.keys.length === 0
+    },
+    isInvalid: function () {
+      return this.valid === false
     }
   },
   data: function () {
@@ -90,14 +100,15 @@ export default {
       key: '',
       type: '',
       types: [
-        {label: 'Twitter'},
-        {label: 'Gmail'},
-        {label: 'Facebook'},
-        {label: 'Skype'},
-        {label: 'HotMail'},
-        {label: 'Instagram'}
+        {value: 'Twitter'},
+        {value: 'Gmail'},
+        {value: 'Facebook'},
+        {value: 'Skype'},
+        {value: 'HotMail'},
+        {value: 'Instagram'}
       ],
-      asterisk: []
+      asterisk: [],
+      valid: true
     }
   },
   methods: {
@@ -107,11 +118,9 @@ export default {
         this.$store.commit('setKey', {key: this.key, type: this.type})
         this.key = ''
         this.type = ''
+        this.valid === false ? this.valid = true : ''
       } else {
-        this.$alert('No has introducido ninguna contraseña', 'Error', {
-          confirmButtonText: 'OK',
-          type: 'error'
-        })
+        this.valid = false
       }
     },
     removeKey: function (item) {
