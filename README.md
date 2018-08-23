@@ -22,4 +22,6 @@ npm run build
 ```
 npm run lint
 ```
-# save-password-vuejs
+### Licensing
+
+MIT
