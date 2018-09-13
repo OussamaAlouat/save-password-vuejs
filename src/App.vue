@@ -1,18 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/candado.png">
-    <router-view>
-      <Home/>
-    </router-view>
+    <v-ons-navigator
+    :page-stack="pageStack"
+    @push-page="pageStack.push($event)"
+    ></v-ons-navigator>
   </div>
 </template>
 
 <script>
+import {mapGetters, mapActions } from 'vuex'
 import Home from './components/Home.vue'
 export default {
   name: 'app',
-  components: {
-    Home
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapGetters({
+      'pageStack': 'getPageStack'
+    })
+
+  },
+  methods: {
+    ...mapActions(['pushPage'])
+
+  },
+  created () {
+    this.pushPage({page: Home})
   }
 }
 </script>

@@ -1,31 +1,26 @@
 <template>
-    <div>
-        <div class="dropbox">
+    <v-ons-page>
+        <v-ons-card >
+            <img src="../assets/sec.jpg" alt="Onsen UI" style="width: 100%">
 
-            <h1>Wellcome to your first secure app</h1>
-            <el-button @click="goToSecure()">Enter</el-button>
-        </div>
-    </div>
+            <div class="title design">
+                <h1>Wellcome to your first secure app</h1>
+            </div>
+
+        </v-ons-card>
+                <el-button @click="goToSecure()">Enter</el-button>
+
+    </v-ons-page>
 </template>
 <script>
+import ListPasswords from './ListPasswords.vue'
 export default {
   name: 'Home',
   methods: {
     goToSecure: function () {
-      this.$router.push('/secure-storage')
+      this.$emit('push-page', ListPasswords)
     }
   }
 }
 
 </script>
-<style>
-    .dropbox {
-        outline: 2px dashed grey; /* the dash box */
-        outline-offset: -10px;
-        background: coral;
-        color: dimgray;
-        padding: 10px 10px;
-        min-height: 200px; /* minimum height */
-        position: relative;
-    }
-</style>
