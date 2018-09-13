@@ -6,9 +6,17 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/es'
 import router from './router'
+// Webpack CSS import
+import 'onsenui/css/onsenui.css'
+import 'onsenui/css/onsen-css-components.css'
+
+// JS import
+import VueOnsen from 'vue-onsenui'
 
 Vue.config.productionTip = false
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI, { locale }) // This already imports 'onsenui'
+
+Vue.use(VueOnsen)
 
 new Vue({
   router,
