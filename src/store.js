@@ -32,7 +32,7 @@ export default new Vuex.Store({
     setKey (state, data) {
       Vue.set(state.keys, state.keys.length, {password: data.password, type: data.type, visibility: false})
     },
-    removeKey (state, key) {
+    removePassword (state, key) {
       const keys = state.keys.filter((val) => val.password !== key.password || val.type !== key.type)
       state.keys = keys.slice()
     },
@@ -44,7 +44,7 @@ export default new Vuex.Store({
       })
     },
     goBack (state) {
-      state.pageStack.pop();
+      state.pageStack.pop()
     }
   },
   getters: {
@@ -70,6 +70,9 @@ export default new Vuex.Store({
     },
     goBack ({commit}) {
       commit('goBack')
+    },
+    removePassword ({commit}, {password}) {
+      commit('removePassword', password)
     }
   }
 })

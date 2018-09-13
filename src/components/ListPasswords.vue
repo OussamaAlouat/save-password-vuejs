@@ -9,20 +9,25 @@
         <v-ons-list>
             <v-ons-list-item v-for="(password, index) in passwords" :key="index">
                 <div class="left">
-                    <!--<img class="list-item__thumbnail" src="./../assets/candado.png"> -->
-                </div>
-                <div class="center">
                     <span class="list-item__title">{{password.type}}</span>
                     <span class="list-item__subtitle">
                         <v-ons-input :type="getType(password)" :value="password.password" readonly></v-ons-input>
-                    </span>
-                </div>
-                <div class="right">
+                    </span>                </div>
+                <div class="center">
+
                     <v-ons-button modifier="quiet" @click="changeVisibilityPassword(password)">
                         <v-ons-icon
-                        :icon="getIcon(password)"
-                        size="32px, material:24px">
+                                :icon="getIcon(password)"
+                                size="32px, material:24px">
+                        </v-ons-icon>
+                    </v-ons-button>
+                </div>
+                <div class="right">
 
+                    <v-ons-button modifier="quiet" @click="remove(password)">
+                        <v-ons-icon
+                                icon="fa-trash"
+                                size="32px, material:24px">
                         </v-ons-icon>
                     </v-ons-button>
                 </div>
@@ -46,7 +51,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['changeVisibility']),
+    ...mapActions(['changeVisibility', 'removePassword']),
     getIcon (item) {
       if (item.visibility === true) {
         return 'fa-eye-slash'
@@ -64,6 +69,9 @@ export default {
     },
     goToAddPassword () {
       this.$emit('push-page', AddPassword)
+    },
+    remove (password) {
+      this.removePassword({password: password})
     }
 
   }
