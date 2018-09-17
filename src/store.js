@@ -4,23 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    keys: [{
-      password: '123456',
-      type: 'Facebook',
-      visibility: true,
-      img: ''
-    },
-    {
-      password: '12999',
-      type: 'Gmail',
-      visibility: true
-    },
-    {
-      password: '12999',
-      type: 'Gmail2',
-      visibility: false
-    }
-    ],
+    keys: [],
     pageStack: [],
     types: ['Facebook', 'Gmail', 'Instagram']
   },

@@ -46,9 +46,13 @@ export default {
   methods: {
     ...mapActions(['setPassword', 'goBack']),
     addPassword () {
-      const pass = {type: this.type, password: this.password}
-      this.setPassword({password: pass})
-      this.goBack()
+      if (this.password === '' || this.type === '') {
+        console.log('Error')
+      } else {
+        const pass = {type: this.type, password: this.password}
+        this.setPassword({password: pass})
+        this.goBack()
+      }
     }
   }
 }
