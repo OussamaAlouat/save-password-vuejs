@@ -21,7 +21,7 @@
                     </span></div>
                     <div class="center">
 
-                        <v-ons-button modifier="quiet" @click="changeVisibilityPassword(password)">
+                        <v-ons-button class="showButton" modifier="quiet" @click="changeVisibilityPassword(password)">
                             <v-ons-icon
                                     :icon="getIcon(password)"
                                     size="32px, material:24px">
@@ -30,10 +30,10 @@
                     </div>
                     <div class="right">
 
-                        <v-ons-button modifier="quiet" @click="remove(password)" style="color: red;">
+                        <v-ons-button class="removeButton" modifier="quiet" @click="remove(password)">
                             <v-ons-icon
                                     icon="fa-trash"
-                                    size="32px, material:24px">
+                                    size="32px">
                             </v-ons-icon>
                         </v-ons-button>
                     </div>
@@ -107,5 +107,15 @@ export default {
         width: 14rem;
         height: 6rem;
         line-height: 5rem;
+    }
+    .removeButton{
+        color: red;
+        background: white !important;
+        background-color: white !important;
+    }
+    .showButton{
+        background: white !important;
+        background-color: white !important;
+
     }
 </style>
