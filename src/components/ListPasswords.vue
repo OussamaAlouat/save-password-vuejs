@@ -1,4 +1,4 @@
-<template>
+<template >
     <v-ons-page>
         <v-ons-toolbar>
             <div class="center">
@@ -15,10 +15,13 @@
             <v-ons-list>
                 <v-ons-list-item v-for="(password, index) in passwords" :key="index">
                     <div class="left">
-                        <span class="list-item__title">{{password.type}}</span>
+                        <span class="list-item__subtitle" style="line-height: 1.9rem !important;">
+                            {{password.type}}
+                        </span>
                         <span class="list-item__subtitle">
                         <v-ons-input :type="getType(password)" :value="password.password" readonly></v-ons-input>
-                    </span></div>
+                    </span>
+                    </div>
                     <div class="center">
 
                         <v-ons-button class="showButton" modifier="quiet" @click="changeVisibilityPassword(password)">
@@ -29,7 +32,6 @@
                         </v-ons-button>
                     </div>
                     <div class="right">
-
                         <v-ons-button class="removeButton" modifier="quiet" @click="remove(password)">
                             <v-ons-icon
                                     icon="fa-trash"
