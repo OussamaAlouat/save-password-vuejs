@@ -22,6 +22,3 @@ npm run build
 ```
 npm run lint
 ```
-### Licensing
-
-MIT
