@@ -23,6 +23,11 @@
         <v-ons-button @click="addPassword()">
             Save
         </v-ons-button>
+        <v-ons-toast
+        :visible.sync="toastVisibility" animation="ascend">
+            {{message}}
+            <button @click="toastVisibility = false">OK</button>
+        </v-ons-toast>
 
     </v-ons-page>
 </template>
@@ -35,7 +40,9 @@ export default {
   data () {
     return {
       password: '',
-      type: ''
+      type: '',
+      toastVisibility: false,
+      message: ''
     }
   },
   computed: {
@@ -47,7 +54,12 @@ export default {
     ...mapActions(['setPassword', 'goBack']),
     addPassword () {
       if (this.password === '' || this.type === '') {
-        console.log('Error')
+        if (this.password === '' && this.type === '') {
+          this.message = 'The password and the type are empty!'
+        } else {
+          this.message = this.password === '' ? 'The password is empty' : 'The type is empty'
+        }
+        this.toastVisibility = true
       } else {
         const pass = {type: this.type, password: this.password}
         this.setPassword({password: pass})
