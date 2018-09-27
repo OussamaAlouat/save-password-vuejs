@@ -32,7 +32,7 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getKeys (state) {
+    getPasswords (state) {
       return state.passwords
     },
     getPageStack (state) {

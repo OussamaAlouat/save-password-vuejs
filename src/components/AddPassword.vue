@@ -47,7 +47,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      'types': 'getTypes'
+      'types': 'getTypes',
+      'passwords': 'getPasswords'
     })
   },
   methods: {
@@ -62,9 +63,20 @@ export default {
         this.toastVisibility = true
       } else {
         const pass = {type: this.type, password: this.password}
-        this.setPassword({password: pass})
-        this.goBack()
+        if (!this.isPresent(pass)) {
+          this.setPassword({password: pass})
+          this.goBack()
+        } else {
+          this.message = 'This password is already present on your passwords list'
+          this.toastVisibility = true
+        }
       }
+    },
+    isPresent (password) {
+      return this.passwords.filter((val) =>
+        val.password === password.password &&
+                val.type === password.type
+      ).length > 0
     }
   }
 }
@@ -74,6 +86,5 @@ export default {
     .text{
         margin-bottom: 1rem;;
     }
-
 
 </style>

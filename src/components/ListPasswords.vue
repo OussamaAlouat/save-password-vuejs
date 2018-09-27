@@ -57,7 +57,7 @@ export default {
   name: 'ListPasswords',
   computed: {
     ...mapGetters({
-      'passwords': 'getKeys'
+      'passwords': 'getPasswords'
     }),
     isEmpty () {
       return this.passwords.length === 0
