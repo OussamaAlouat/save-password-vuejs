@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    keys: [],
+    passwords: [],
     pageStack: [],
     types: ['Facebook', 'Gmail', 'Instagram']
   },
@@ -14,14 +14,14 @@ export default new Vuex.Store({
     },
 
     setKey (state, data) {
-      Vue.set(state.keys, state.keys.length, {password: data.password, type: data.type, visibility: false})
+      Vue.set(state.passwords, state.passwords.length, {password: data.password, type: data.type, visibility: false})
     },
     removePassword (state, key) {
-      const keys = state.keys.filter((val) => val.password !== key.password || val.type !== key.type)
-      state.keys = keys.slice()
+      const passwords = state.passwords.filter((val) => val.password !== key.password || val.type !== key.type)
+      state.passwords = passwords.slice()
     },
     changeVisibility (state, password) {
-      state.keys.forEach((val) => {
+      state.passwords.forEach((val) => {
         if (val.type === password.type && val.password === password.password) {
           val.visibility = password.visibility
         }
@@ -33,7 +33,7 @@ export default new Vuex.Store({
   },
   getters: {
     getKeys (state) {
-      return state.keys
+      return state.passwords
     },
     getPageStack (state) {
       return state.pageStack
