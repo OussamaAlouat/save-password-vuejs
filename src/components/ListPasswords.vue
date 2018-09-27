@@ -137,6 +137,5 @@ export default {
     .editButton {
         background: white !important;
         background-color: white !important;
-        color: blue;
     }
 </style>
