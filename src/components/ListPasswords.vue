@@ -34,7 +34,7 @@
                                 </v-ons-button>
                             </v-ons-col>
                             <v-ons-col width="2rem">
-                                <v-ons-button modifier="quiet" class="editButton">
+                            <v-ons-button modifier="quiet" class="editButton" @click="updatePassword(password)">
                                     <v-ons-icon
                                             icon="fa-pencil"
                                             size="1.1rem, material:1rem">
@@ -64,6 +64,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import AddPassword from './AddPassword.vue'
+import UpdatePassword from './UpdatePassword.vue'
 
 export default {
   name: 'ListPasswords',
@@ -76,7 +77,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['changeVisibility', 'removePassword']),
+    ...mapActions(['changeVisibility', 'removePassword', 'setCurrentPassword']),
     getIcon (item) {
       if (item.visibility === true) {
         return 'fa-eye-slash'
@@ -103,6 +104,13 @@ export default {
     },
     remove (password) {
       this.removePassword({password: password})
+    },
+    goToUpdatePassword () {
+      this.$emit('push-page', UpdatePassword)
+    },
+    updatePassword (password) {
+      this.setCurrentPassword({password: password})
+      this.goToUpdatePassword()
     }
 
   }
