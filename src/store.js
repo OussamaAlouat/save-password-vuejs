@@ -6,7 +6,8 @@ export default new Vuex.Store({
   state: {
     passwords: [],
     pageStack: [],
-    types: ['Facebook', 'Gmail', 'Instagram']
+    types: ['Facebook', 'Gmail', 'Instagram'],
+    currentPassword: {}
   },
   mutations: {
     pushPage (state, page) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     goBack (state) {
       state.pageStack.pop()
+    },
+    setCurrentPassword (state, password) {
+      state.password = password
     }
   },
   getters: {
@@ -40,6 +44,9 @@ export default new Vuex.Store({
     },
     getTypes (state) {
       return state.types
+    },
+    getPassword (state) {
+      return state.password
     }
   },
   actions: {
@@ -57,6 +64,9 @@ export default new Vuex.Store({
     },
     removePassword ({commit}, {password}) {
       commit('removePassword', password)
+    },
+    setCurrentPassword ({commit}, {password}) {
+      commit('setCurrentPassword', password)
     }
   }
 })
