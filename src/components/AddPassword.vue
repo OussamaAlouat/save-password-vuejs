@@ -54,6 +54,7 @@ export default {
   methods: {
     ...mapActions(['setPassword', 'goBack']),
     addPassword () {
+
       if (this.password === '' || this.type === '') {
         if (this.password === '' && this.type === '') {
           this.message = 'The password and the type are empty!'
@@ -64,7 +65,7 @@ export default {
       } else {
         const pass = {type: this.type, password: this.password}
         if (!this.isPresent(pass)) {
-          this.setPassword({password: pass})
+          this.setPassword({password: {password: pass.password, type: pass.type, id: this.getId()}})
           this.goBack()
         } else {
           this.message = 'This password is already present on your passwords list'
@@ -77,6 +78,10 @@ export default {
         val.password === password.password &&
                 val.type === password.type
       ).length > 0
+    },
+    getId () {
+      return (Math.ceil(Math.random() * (Math.floor(Math.random() * 99999999999999999999) + 100000 +
+          Math.ceil(Math.random() * Math.floor(Math.random() * 10000000000000)))))
     }
   }
 }
