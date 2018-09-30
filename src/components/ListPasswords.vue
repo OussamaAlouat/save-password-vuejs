@@ -89,7 +89,8 @@ export default {
         password: {
           type: item.type,
           password: item.password,
-          visibility: !item.visibility
+          visibility: !item.visibility,
+          id: item.id
         }
       })
     },

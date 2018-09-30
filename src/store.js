@@ -14,16 +14,21 @@ export default new Vuex.Store({
       state.pageStack.push(page)
     },
 
-    setKey (state, data) {
-      Vue.set(state.passwords, state.passwords.length, {password: data.password, type: data.type, visibility: false})
+    setPassword (state, data) {
+      Vue.set(state.passwords, state.passwords.length, {
+        password: data.password,
+        type: data.type,
+        visibility: false,
+        id: data.id
+      })
     },
-    removePassword (state, key) {
-      const passwords = state.passwords.filter((val) => val.password !== key.password || val.type !== key.type)
+    removePassword (state, password) {
+      const passwords = state.passwords.filter((val) => val.id !== password.id)
       state.passwords = passwords.slice()
     },
     changeVisibility (state, password) {
       state.passwords.forEach((val) => {
-        if (val.type === password.type && val.password === password.password) {
+        if (val.id === password.id) {
           val.visibility = password.visibility
         }
       })
@@ -34,6 +39,11 @@ export default new Vuex.Store({
     setCurrentPassword (state, password) {
       state.password = password
     }
+    /*
+    updatePassword (statte, password) {
+
+    }
+    */
   },
   getters: {
     getPasswords (state) {
@@ -57,7 +67,7 @@ export default new Vuex.Store({
       commit('changeVisibility', password)
     },
     setPassword ({commit}, {password}) {
-      commit('setKey', password)
+      commit('setPassword', password)
     },
     goBack ({commit}) {
       commit('goBack')
@@ -67,6 +77,9 @@ export default new Vuex.Store({
     },
     setCurrentPassword ({commit}, {password}) {
       commit('setCurrentPassword', password)
+    },
+    updatePassword ({commit}, {password}) {
+      commit('updatePassword', password)
     }
   }
 })

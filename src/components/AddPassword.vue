@@ -54,7 +54,6 @@ export default {
   methods: {
     ...mapActions(['setPassword', 'goBack']),
     addPassword () {
-
       if (this.password === '' || this.type === '') {
         if (this.password === '' && this.type === '') {
           this.message = 'The password and the type are empty!'
@@ -80,8 +79,9 @@ export default {
       ).length > 0
     },
     getId () {
-      return (Math.ceil(Math.random() * (Math.floor(Math.random() * 99999999999999999999) + 100000 +
+      const id = (Math.ceil(Math.random() * (Math.floor(Math.random() * 99999999999999999999) + 100000 +
           Math.ceil(Math.random() * Math.floor(Math.random() * 10000000000000)))))
+      return this.passwords.filter((val) => val.id === id).length > 0 ? this.getId() : id
     }
   }
 }
