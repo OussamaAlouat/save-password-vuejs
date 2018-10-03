@@ -1,4 +1,4 @@
-<template >
+<template>
     <v-ons-page>
         <v-ons-toolbar>
             <div class="center">
@@ -14,7 +14,7 @@
         <div v-else>
             <v-ons-list>
                 <v-ons-list-item v-for="(password, index) in passwords" :key="index">
-                    <div class="left">
+                    <div class="left" style="width: 10rem">
                         <span class="list-item__subtitle" style="line-height: 1.9rem !important;">
                             {{password.type}}
                         </span>
@@ -23,19 +23,31 @@
                     </span>
                     </div>
                     <div class="center">
-
-                        <v-ons-button class="showButton" modifier="quiet" @click="changeVisibilityPassword(password)">
-                            <v-ons-icon
-                                    :icon="getIcon(password)"
-                                    size="32px, material:24px">
-                            </v-ons-icon>
-                        </v-ons-button>
+                        <v-ons-row>
+                            <v-ons-col width="4rem">
+                                <v-ons-button class="showButton" modifier="quiet"
+                                              @click="changeVisibilityPassword(password)">
+                                    <v-ons-icon
+                                            :icon="getIcon(password)"
+                                            size="1.2rem, material:1rem">
+                                    </v-ons-icon>
+                                </v-ons-button>
+                            </v-ons-col>
+                            <v-ons-col width="2rem">
+                            <v-ons-button modifier="quiet" class="editButton" @click="updatePassword(password)">
+                                    <v-ons-icon
+                                            icon="fa-pencil"
+                                            size="1.1rem, material:1rem">
+                                    </v-ons-icon>
+                                </v-ons-button>
+                            </v-ons-col>
+                        </v-ons-row>
                     </div>
                     <div class="right">
                         <v-ons-button class="removeButton" modifier="quiet" @click="remove(password)">
                             <v-ons-icon
                                     icon="fa-trash"
-                                    size="32px">
+                                    size="1.2rem, material:1.6rem">
                             </v-ons-icon>
                         </v-ons-button>
                     </div>
@@ -52,19 +64,20 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import AddPassword from './AddPassword.vue'
+import UpdatePassword from './UpdatePassword.vue'
 
 export default {
   name: 'ListPasswords',
   computed: {
     ...mapGetters({
-      'passwords': 'getKeys'
+      'passwords': 'getPasswords'
     }),
     isEmpty () {
       return this.passwords.length === 0
     }
   },
   methods: {
-    ...mapActions(['changeVisibility', 'removePassword']),
+    ...mapActions(['changeVisibility', 'removePassword', 'setCurrentPassword', 'pushPage']),
     getIcon (item) {
       if (item.visibility === true) {
         return 'fa-eye-slash'
@@ -76,7 +89,8 @@ export default {
         password: {
           type: item.type,
           password: item.password,
-          visibility: !item.visibility
+          visibility: !item.visibility,
+          id: item.id
         }
       })
     },
@@ -91,6 +105,10 @@ export default {
     },
     remove (password) {
       this.removePassword({password: password})
+    },
+    updatePassword (password) {
+      this.setCurrentPassword({password: password})
+      this.pushPage({page: UpdatePassword})
     }
 
   }
@@ -110,14 +128,20 @@ export default {
         height: 6rem;
         line-height: 5rem;
     }
-    .removeButton{
+
+    .removeButton {
         color: red;
         background: white !important;
         background-color: white !important;
     }
-    .showButton{
+
+    .showButton {
         background: white !important;
         background-color: white !important;
+    }
 
+    .editButton {
+        background: white !important;
+        background-color: white !important;
     }
 </style>

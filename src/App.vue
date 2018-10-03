@@ -13,9 +13,6 @@ import ListPasswords from './components/ListPasswords.vue'
 
 export default {
   name: 'app',
-  data () {
-    return {}
-  },
   computed: {
     ...mapGetters({
       'pageStack': 'getPageStack'

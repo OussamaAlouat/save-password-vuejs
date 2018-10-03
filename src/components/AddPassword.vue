@@ -23,6 +23,11 @@
         <v-ons-button @click="addPassword()">
             Save
         </v-ons-button>
+        <v-ons-toast
+        :visible.sync="toastVisibility" animation="ascend">
+            {{message}}
+            <button @click="toastVisibility = false">OK</button>
+        </v-ons-toast>
 
     </v-ons-page>
 </template>
@@ -35,24 +40,48 @@ export default {
   data () {
     return {
       password: '',
-      type: ''
+      type: '',
+      toastVisibility: false,
+      message: ''
     }
   },
   computed: {
     ...mapGetters({
-      'types': 'getTypes'
+      'types': 'getTypes',
+      'passwords': 'getPasswords'
     })
   },
   methods: {
     ...mapActions(['setPassword', 'goBack']),
     addPassword () {
       if (this.password === '' || this.type === '') {
-        console.log('Error')
+        if (this.password === '' && this.type === '') {
+          this.message = 'The password and the type are empty!'
+        } else {
+          this.message = this.password === '' ? 'The password is empty' : 'The type is empty'
+        }
+        this.toastVisibility = true
       } else {
         const pass = {type: this.type, password: this.password}
-        this.setPassword({password: pass})
-        this.goBack()
+        if (!this.isPresent(pass)) {
+          this.setPassword({password: {password: pass.password, type: pass.type, id: this.getId()}})
+          this.goBack()
+        } else {
+          this.message = 'This password is already present on your passwords list'
+          this.toastVisibility = true
+        }
       }
+    },
+    isPresent (password) {
+      return this.passwords.filter((val) =>
+        val.password === password.password &&
+                val.type === password.type
+      ).length > 0
+    },
+    getId () {
+      const id = (Math.ceil(Math.random() * (Math.floor(Math.random() * 99999999999999999999) + 100000 +
+          Math.ceil(Math.random() * Math.floor(Math.random() * 10000000000000)))))
+      return this.passwords.filter((val) => val.id === id).length > 0 ? this.getId() : id
     }
   }
 }

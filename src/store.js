@@ -4,42 +4,66 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    keys: [],
+    passwords: [],
     pageStack: [],
-    types: ['Facebook', 'Gmail', 'Instagram']
+    types: ['Facebook', 'Gmail', 'Instagram'],
+    currentPassword: {}
   },
   mutations: {
     pushPage (state, page) {
       state.pageStack.push(page)
     },
 
-    setKey (state, data) {
-      Vue.set(state.keys, state.keys.length, {password: data.password, type: data.type, visibility: false})
+    setPassword (state, data) {
+      Vue.set(state.passwords, state.passwords.length, {
+        password: data.password,
+        type: data.type,
+        visibility: false,
+        id: data.id
+      })
     },
-    removePassword (state, key) {
-      const keys = state.keys.filter((val) => val.password !== key.password || val.type !== key.type)
-      state.keys = keys.slice()
+    removePassword (state, password) {
+      const passwords = state.passwords.filter((val) => val.id !== password.id)
+      state.passwords = passwords.slice()
     },
     changeVisibility (state, password) {
-      state.keys.forEach((val) => {
-        if (val.type === password.type && val.password === password.password) {
+      state.passwords.forEach((val) => {
+        if (val.id === password.id) {
           val.visibility = password.visibility
         }
       })
     },
     goBack (state) {
       state.pageStack.pop()
+    },
+    setCurrentPassword (state, password) {
+      console.log(password)
+      state.currentPassword = password
+    },
+    updatePassword (state, password) {
+      const copy = state.passwords.slice()
+      state.passwords = copy.map((val) => {
+        if (state.currentPassword.id === val.id) {
+          val.password = password.password
+          val.type = password.type
+        }
+        return val
+      })
     }
+
   },
   getters: {
-    getKeys (state) {
-      return state.keys
+    getPasswords (state) {
+      return state.passwords
     },
     getPageStack (state) {
       return state.pageStack
     },
     getTypes (state) {
       return state.types
+    },
+    getPassword (state) {
+      return state.currentPassword
     }
   },
   actions: {
@@ -50,13 +74,19 @@ export default new Vuex.Store({
       commit('changeVisibility', password)
     },
     setPassword ({commit}, {password}) {
-      commit('setKey', password)
+      commit('setPassword', password)
     },
     goBack ({commit}) {
       commit('goBack')
     },
     removePassword ({commit}, {password}) {
       commit('removePassword', password)
+    },
+    setCurrentPassword ({commit}, {password}) {
+      commit('setCurrentPassword', password)
+    },
+    updatePassword ({commit}, {password}) {
+      commit('updatePassword', password)
     }
   }
 })
