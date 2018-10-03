@@ -19,20 +19,28 @@
                          type="text"
                          v-model="type"></v-ons-input>
         </v-ons-card>
-        <v-ons-button @click="updatePassword()">
+        <v-ons-button @click="update()">
             Update
         </v-ons-button>
+        <v-ons-toast
+                :visible.sync="toastVisibility" animation="ascend">
+            {{message}}
+            <button @click="toastVisibility = false">OK</button>
+        </v-ons-toast>
+
     </v-ons-page>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'UpdatePassword',
   data () {
     return {
       password: '',
-      type: ''
+      type: '',
+      toastVisibility: false,
+      message: ''
     }
   },
   computed: {
@@ -41,19 +49,23 @@ export default {
     })
   },
   methods: {
+    ...mapActions(['updatePassword', 'goBack']),
     start () {
       this.password = this.currentPassword.password
       this.type = this.currentPassword.type
     },
-    updatePassword () {
+    update () {
       if (this.currentPassword.password === this.password && this.currentPassword.type === this.type) {
-        console.log('errpr')
+        this.message = 'The old password and the new password are the same'
+        this.toastVisibility = true
+      } else {
+        this.updatePassword({password: {password: this.password, type: this.type, visibility: false}})
+        this.goBack()
       }
     }
   },
   mounted () {
     this.start()
-    console.log('called')
   }
 }
 </script>

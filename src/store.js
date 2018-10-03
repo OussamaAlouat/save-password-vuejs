@@ -39,12 +39,18 @@ export default new Vuex.Store({
     setCurrentPassword (state, password) {
       console.log(password)
       state.currentPassword = password
+    },
+    updatePassword (state, password) {
+      const copy = state.passwords.slice()
+      state.passwords = copy.map((val) => {
+        if (state.currentPassword.id === val.id) {
+          val.password = password.password
+          val.type = password.type
+        }
+        return val
+      })
     }
-    /*
-    updatePassword (statte, password) {
 
-    }
-    */
   },
   getters: {
     getPasswords (state) {
