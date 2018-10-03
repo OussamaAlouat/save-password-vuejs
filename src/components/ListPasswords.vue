@@ -77,7 +77,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['changeVisibility', 'removePassword', 'setCurrentPassword']),
+    ...mapActions(['changeVisibility', 'removePassword', 'setCurrentPassword', 'pushPage']),
     getIcon (item) {
       if (item.visibility === true) {
         return 'fa-eye-slash'
@@ -106,12 +106,9 @@ export default {
     remove (password) {
       this.removePassword({password: password})
     },
-    goToUpdatePassword () {
-      this.$emit('push-page', UpdatePassword)
-    },
     updatePassword (password) {
       this.setCurrentPassword({password: password})
-      this.goToUpdatePassword()
+      this.pushPage({page: UpdatePassword})
     }
 
   }

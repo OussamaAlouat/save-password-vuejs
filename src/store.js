@@ -37,7 +37,8 @@ export default new Vuex.Store({
       state.pageStack.pop()
     },
     setCurrentPassword (state, password) {
-      state.password = password
+      console.log(password)
+      state.currentPassword = password
     }
     /*
     updatePassword (statte, password) {
@@ -56,7 +57,7 @@ export default new Vuex.Store({
       return state.types
     },
     getPassword (state) {
-      return state.password
+      return state.currentPassword
     }
   },
   actions: {

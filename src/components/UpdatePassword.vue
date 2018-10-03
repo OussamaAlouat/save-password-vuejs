@@ -11,13 +11,13 @@
                 Password
             </div>
             <v-ons-input type="password"
-                         v-model="password.password"></v-ons-input>
+                         v-model="password"></v-ons-input>
             <div class="text">
                 Type of password
             </div>
             <v-ons-input placeholder="Facebook, twitter ..."
                          type="text"
-                         v-model="password.type"></v-ons-input>
+                         v-model="type"></v-ons-input>
         </v-ons-card>
         <v-ons-button @click="updatePassword()">
             Update
@@ -29,14 +29,31 @@
 import {mapGetters} from 'vuex'
 export default {
   name: 'UpdatePassword',
+  data () {
+    return {
+      password: '',
+      type: ''
+    }
+  },
   computed: {
     ...mapGetters({
-      'password': 'getPassword'
+      'currentPassword': 'getPassword'
     })
   },
   methods: {
+    start () {
+      this.password = this.currentPassword.password
+      this.type = this.currentPassword.type
+    },
     updatePassword () {
+      if (this.currentPassword.password === this.password && this.currentPassword.type === this.type) {
+        console.log('errpr')
+      }
     }
+  },
+  mounted () {
+    this.start()
+    console.log('called')
   }
 }
 </script>
