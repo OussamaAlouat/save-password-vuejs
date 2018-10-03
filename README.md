@@ -1,4 +1,7 @@
-# SAVE-PASSWORD-VUEJS
+# SAVE-PASSWORD-VUEJS-PWAPP
+This project is a simple progressive web app, dedicated to practice and use vuejs framework with vuex, and Element.io component library.
+
+Demo: https://oussamaalouat.github.io/
 
 ## Project setup
 ```
@@ -19,4 +22,3 @@ npm run build
 ```
 npm run lint
 ```
-# save-password-vuejs
