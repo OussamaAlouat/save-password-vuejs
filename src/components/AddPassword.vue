@@ -34,7 +34,6 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
-
 export default {
   name: 'AddPassword',
   data () {
@@ -52,7 +51,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['setPassword', 'goBack']),
+    ...mapActions(['setPassword', 'goBack', 'save', 'setAllPasswords']),
     addPassword () {
       if (this.password === '' || this.type === '') {
         if (this.password === '' && this.type === '') {
@@ -65,6 +64,7 @@ export default {
         const pass = {type: this.type, password: this.password}
         if (!this.isPresent(pass)) {
           this.setPassword({password: {password: pass.password, type: pass.type, id: this.getId()}})
+          this.save()
           this.goBack()
         } else {
           this.message = 'This password is already present on your passwords list'
