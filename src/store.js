@@ -25,6 +25,8 @@ export default new Vuex.Store({
     removePassword (state, password) {
       const passwords = state.passwords.filter((val) => val.id !== password.id)
       state.passwords = passwords.slice()
+      localStorage.removeItem('passwords')
+      localStorage.setItem('passwords', JSON.stringify(state.passwords))
     },
     changeVisibility (state, password) {
       state.passwords.forEach((val) => {
@@ -49,6 +51,16 @@ export default new Vuex.Store({
         }
         return val
       })
+      localStorage.removeItem('passwords')
+      localStorage.setItem('passwords', JSON.stringify(state.passwords))
+    },
+    save (state) {
+      localStorage.setItem('passwords', JSON.stringify(state.passwords))
+    },
+    setAllPasswords (state) {
+      const data = JSON.parse(localStorage.getItem('passwords'))
+      console.log(data)
+      if (data !== null) state.passwords = data
     }
 
   },
@@ -87,6 +99,12 @@ export default new Vuex.Store({
     },
     updatePassword ({commit}, {password}) {
       commit('updatePassword', password)
+    },
+    save ({commit}) {
+      commit('save')
+    },
+    setAllPasswords ({commit}) {
+      commit('setAllPasswords')
     }
   }
 })

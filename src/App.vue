@@ -20,10 +20,11 @@ export default {
 
   },
   methods: {
-    ...mapActions(['pushPage'])
+    ...mapActions(['pushPage', 'setAllPasswords'])
   },
   created () {
     this.pushPage({page: ListPasswords})
+    this.setAllPasswords()
   }
 }
 </script>
