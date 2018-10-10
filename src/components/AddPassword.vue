@@ -10,13 +10,22 @@
             <div>
                 Password
             </div>
-            <v-ons-input placeholder="Input your password"
-                         type="password"
+            <v-ons-input placeholder="Input your password" class="textInput"
+                         :type="getType()"
             v-model="password"></v-ons-input>
+
+            <v-ons-button class="showButton" modifier="quiet"
+                          @click="changeVisibilityPassword()">
+                <v-ons-icon
+                        :icon="getIcon()"
+                        size="1.2rem, material:1rem">
+                </v-ons-icon>
+            </v-ons-button>
+
             <div class="text">
                 Type of password
             </div>
-            <v-ons-input placeholder="Facebook, twitter ..."
+            <v-ons-input placeholder="Facebook, twitter ..." class="textInput"
                          type="text"
                          v-model="type"></v-ons-input>
         </v-ons-card>
@@ -41,7 +50,8 @@ export default {
       password: '',
       type: '',
       toastVisibility: false,
-      message: ''
+      message: '',
+      isVisible: false
     }
   },
   computed: {
@@ -82,6 +92,15 @@ export default {
       const id = (Math.ceil(Math.random() * (Math.floor(Math.random() * 99999999999999999999) + 100000 +
           Math.ceil(Math.random() * Math.floor(Math.random() * 10000000000000)))))
       return this.passwords.filter((val) => val.id === id).length > 0 ? this.getId() : id
+    },
+    getType () {
+      return this.isVisible ? 'text' : 'password'
+    },
+    getIcon () {
+      return this.isVisible ? 'fa-eye-slash' : 'fa-eye'
+    },
+    changeVisibilityPassword () {
+      this.isVisible = !this.isVisible
     }
   }
 }
@@ -90,6 +109,13 @@ export default {
 <style scoped>
     .text{
         margin-bottom: 1rem;;
+    }
+    .textInput {
+        width: 13em;
+    }
+    .showButton {
+        background: white !important;
+        background-color: white !important;
     }
 
 </style>
