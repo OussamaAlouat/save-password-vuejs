@@ -8,13 +8,21 @@
         </v-ons-toolbar>
         <v-ons-card>
             <div>
-                Password
+                Old password
             </div>
-            <v-ons-input type="password"
+            <v-ons-input :type="getType()" class="textInput"
                          v-model="password"></v-ons-input>
+            <v-ons-button class="showButton" modifier="quiet"
+                          @click="changeVisibilityPassword()">
+                <v-ons-icon
+                        :icon="getIcon()"
+                        size="1.2rem, material:1rem">
+                </v-ons-icon>
+            </v-ons-button>
             <div class="text">
                 Type of password
             </div>
+
             <v-ons-input placeholder="Facebook, twitter ..."
                          type="text"
                          v-model="type"></v-ons-input>
@@ -32,6 +40,9 @@
 </template>
 
 <script>
+/****
+     * Hay que añadir el oldPassword y newPassword, para diferenciar entre la nueva y la vieja
+     */
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'UpdatePassword',
@@ -40,7 +51,8 @@ export default {
       password: '',
       type: '',
       toastVisibility: false,
-      message: ''
+      message: '',
+      isVisible: false
     }
   },
   computed: {
@@ -62,6 +74,15 @@ export default {
         this.updatePassword({password: {password: this.password, type: this.type, visibility: false}})
         this.goBack()
       }
+    },
+    getType () {
+      return this.isVisible ? 'text' : 'password'
+    },
+    changeVisibilityPassword () {
+      this.isVisible = !this.isVisible
+    },
+    getIcon () {
+      return this.isVisible ? 'fa-eye-slash' : 'fa-eye'
     }
   },
   mounted () {
@@ -69,7 +90,13 @@ export default {
   }
 }
 </script>
-
-<style scoped>
+<style>
+    .textInput {
+        width: 13rem;
+    }
+    .showButton {
+        background: white !important;
+        background-color: white !important;
+    }
 
 </style>
