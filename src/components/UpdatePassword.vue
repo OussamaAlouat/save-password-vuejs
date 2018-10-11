@@ -26,19 +26,11 @@
                          v-model="password"></v-ons-input>
 
             <div class="text">
-                Old Type of password
+                Type of password
             </div>
             <v-ons-input placeholder="Facebook, twitter ..." readonly=""
                          type="text"
                          v-model="currentPassword.type">
-            </v-ons-input>
-
-            <div class="text">
-                New Type of password
-            </div>
-            <v-ons-input placeholder="Facebook, twitter ..."
-                         type="text"
-                         v-model="type">
             </v-ons-input>
         </v-ons-card>
 
@@ -67,7 +59,6 @@ export default {
   data () {
     return {
       password: '',
-      type: '',
       toastVisibility: false,
       message: '',
       isVisible: false
@@ -82,17 +73,17 @@ export default {
     ...mapActions(['updatePassword', 'goBack']),
     update () {
       if (this.checkUpdate()) {
-        this.updatePassword({password: {password: this.password, type: this.type, visibility: false}})
+        this.updatePassword({password: {password: this.password, type: this.currentPassword.type, visibility: false}})
         this.goBack()
       }
     },
     checkUpdate () {
-      if (this.password === '' && this.type === '') {
-        this.message = 'The new type and the new password are empty'
+      if (this.password === '') {
+        this.message = 'The new password is empty'
         this.toastVisibility = true
         return false
       } else {
-        if (this.currentPassword.password === this.password && this.currentPassword.type === this.type) {
+        if (this.currentPassword.password === this.password) {
           this.message = 'The old password and the new password are the same'
           this.toastVisibility = true
           return false
