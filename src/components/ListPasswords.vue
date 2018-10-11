@@ -34,7 +34,7 @@
                                 </v-ons-button>
                             </v-ons-col>
                             <v-ons-col width="2rem">
-                            <v-ons-button modifier="quiet" class="editButton" @click="updatePassword(password)">
+                             <v-ons-button modifier="quiet" class="editButton"  @click="updatePassword(password)">
                                     <v-ons-icon
                                             icon="fa-pencil"
                                             size="1.1rem, material:1rem">
@@ -54,6 +54,20 @@
                 </v-ons-list-item>
             </v-ons-list>
         </div>
+
+        <v-ons-toast
+                :visible.sync="toastVisibility" animation="ascend">
+           <div>{{message}}</div>
+            <div>
+            <v-ons-button  class="toastButtons"  modifier="quiet"
+                    @click="confirm()"><small>OK</small>
+            </v-ons-button>
+            <v-ons-button class="toastButtons"  modifier="quiet"
+                    @click="toastVisibility = false"><small>NO</small>
+            </v-ons-button>
+            </div>
+        </v-ons-toast>
+
         <v-ons-fab position='bottom right' @click="goToAddPassword()">
             <v-ons-icon icon="fa-plus"></v-ons-icon>
         </v-ons-fab>
@@ -68,6 +82,13 @@ import UpdatePassword from './UpdatePassword.vue'
 
 export default {
   name: 'ListPasswords',
+  data () {
+    return {
+      toastVisibility: false,
+      message: 'The password will be delete, do you wont continue?',
+      passwordToRemove: {}
+    }
+  },
   computed: {
     ...mapGetters({
       'passwords': 'getPasswords'
@@ -104,11 +125,19 @@ export default {
       this.$emit('push-page', AddPassword)
     },
     remove (password) {
-      this.removePassword({password: password})
+      this.passwordToRemove = Object.assign({}, password)
+      this.showRemoveConfirmation()
     },
     updatePassword (password) {
       this.setCurrentPassword({password: password})
       this.pushPage({page: UpdatePassword})
+    },
+    showRemoveConfirmation () {
+      this.toastVisibility = true
+    },
+    confirm () {
+      this.removePassword({password: this.passwordToRemove})
+      this.toastVisibility = false
     }
 
   }
@@ -143,5 +172,13 @@ export default {
     .editButton {
         background: white !important;
         background-color: white !important;
+    }
+    .toastButtons{
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        color: black;
+        background: darkgray;
+        margin-top: 0.5rem;
+        text-align: center;
     }
 </style>
