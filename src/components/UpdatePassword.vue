@@ -9,7 +9,7 @@
             <div>
                 Old password
             </div>
-            <v-ons-input :type="getType()" class="textInput"
+            <v-ons-input :type="getType()" class="textInput" readonly=""
                          v-model="currentPassword.password"></v-ons-input>
             <v-ons-button class="showButton" modifier="quiet"
                           @click="changeVisibilityPassword()">
@@ -28,7 +28,7 @@
             <div class="text">
                 Old Type of password
             </div>
-            <v-ons-input placeholder="Facebook, twitter ..."
+            <v-ons-input placeholder="Facebook, twitter ..." readonly=""
                          type="text"
                          v-model="currentPassword.type">
             </v-ons-input>
