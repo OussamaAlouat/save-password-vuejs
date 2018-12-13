@@ -40,6 +40,7 @@
         <v-ons-button @click="cancel()" class="cancelButton">
             Cancel
         </v-ons-button>
+
         <v-ons-toast
                 :visible.sync="toastVisibility" animation="ascend">
             {{message}}
