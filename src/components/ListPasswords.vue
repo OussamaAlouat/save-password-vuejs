@@ -54,19 +54,15 @@
                 </v-ons-list-item>
             </v-ons-list>
         </div>
-
-        <v-ons-toast
-                :visible.sync="toastVisibility" animation="ascend">
-           <div>{{message}}</div>
-            <div>
-            <v-ons-button  class="toastButtons"  modifier="quiet"
-                    @click="confirm()"><small>OK</small>
-            </v-ons-button>
-            <v-ons-button class="toastButtons"  modifier="quiet"
-                    @click="toastVisibility = false"><small>NO</small>
-            </v-ons-button>
-            </div>
-        </v-ons-toast>
+        <v-ons-alert-dialog modifier="rowfooter"
+                            :visible.sync="toastVisibility">
+            <span slot="title">Title slots</span>
+            {{message}}
+            <template slot="footer">
+                <v-ons-alert-dialog-button @click="toastVisibility = false">Cancel</v-ons-alert-dialog-button>
+                <v-ons-alert-dialog-button @click="confirm()" >Ok</v-ons-alert-dialog-button>
+            </template>
+        </v-ons-alert-dialog>
 
         <v-ons-fab position='bottom right' @click="goToAddPassword()">
             <v-ons-icon icon="fa-plus"></v-ons-icon>

@@ -79,31 +79,31 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    pushPage ({commit}, {page}) {
+    pushPage ({ commit }, { page }) {
       commit('pushPage', page)
     },
-    changeVisibility ({commit}, {password}) {
+    changeVisibility ({ commit }, { password }) {
       commit('changeVisibility', password)
     },
-    setPassword ({commit}, {password}) {
+    setPassword ({ commit }, { password }) {
       commit('setPassword', password)
     },
-    goBack ({commit}) {
+    goBack ({ commit }) {
       commit('goBack')
     },
-    removePassword ({commit}, {password}) {
+    removePassword ({ commit }, { password }) {
       commit('removePassword', password)
     },
-    setCurrentPassword ({commit}, {password}) {
+    setCurrentPassword ({ commit }, { password }) {
       commit('setCurrentPassword', password)
     },
-    updatePassword ({commit}, {password}) {
+    updatePassword ({ commit }, { password }) {
       commit('updatePassword', password)
     },
-    save ({commit}) {
+    save ({ commit }) {
       commit('save')
     },
-    setAllPasswords ({commit}) {
+    setAllPasswords ({ commit }) {
       commit('setAllPasswords')
     }
   }

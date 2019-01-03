@@ -51,10 +51,8 @@
 </template>
 
 <script>
-/****
-     * Hay que añadir el oldPassword y newPassword, para diferenciar entre la nueva y la vieja
-     */
-import {mapGetters, mapActions} from 'vuex'
+
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'UpdatePassword',
   data () {
@@ -74,7 +72,7 @@ export default {
     ...mapActions(['updatePassword', 'goBack']),
     update () {
       if (this.checkUpdate()) {
-        this.updatePassword({password: {password: this.password, type: this.currentPassword.type, visibility: false}})
+        this.updatePassword({ password: { password: this.password, type: this.currentPassword.type, visibility: false } })
         this.goBack()
       }
     },
@@ -107,7 +105,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
     .textInput {
         width: 13.5rem;
     }

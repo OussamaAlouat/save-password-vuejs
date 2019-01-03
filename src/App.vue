@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import ListPasswords from './components/ListPasswords.vue'
 
 export default {
@@ -23,7 +23,7 @@ export default {
     ...mapActions(['pushPage', 'setAllPasswords'])
   },
   created () {
-    this.pushPage({page: ListPasswords})
+    this.pushPage({ page: ListPasswords })
     this.setAllPasswords()
   }
 }
