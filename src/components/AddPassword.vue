@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AddPassword',
   data () {
@@ -71,9 +71,9 @@ export default {
         }
         this.toastVisibility = true
       } else {
-        const pass = {type: this.type, password: this.password}
+        const pass = { type: this.type, password: this.password }
         if (!this.isPresent(pass)) {
-          this.setPassword({password: {password: pass.password, type: pass.type, id: this.getId()}})
+          this.setPassword({ password: { password: pass.password, type: pass.type, id: this.getId() } })
           this.save()
           this.goBack()
         } else {

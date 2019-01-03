@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import AddPassword from './AddPassword.vue'
 import UpdatePassword from './UpdatePassword.vue'
 
@@ -129,14 +129,14 @@ export default {
       this.showRemoveConfirmation()
     },
     updatePassword (password) {
-      this.setCurrentPassword({password: password})
-      this.pushPage({page: UpdatePassword})
+      this.setCurrentPassword({ password: password })
+      this.pushPage({ page: UpdatePassword })
     },
     showRemoveConfirmation () {
       this.toastVisibility = true
     },
     confirm () {
-      this.removePassword({password: this.passwordToRemove})
+      this.removePassword({ password: this.passwordToRemove })
       this.toastVisibility = false
     }
 
