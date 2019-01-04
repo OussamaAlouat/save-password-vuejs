@@ -56,7 +56,6 @@
         </div>
         <v-ons-alert-dialog modifier="rowfooter"
                             :visible.sync="toastVisibility">
-            <span slot="title">Title slots</span>
             {{message}}
             <template slot="footer">
                 <v-ons-alert-dialog-button @click="toastVisibility = false">Cancel</v-ons-alert-dialog-button>
@@ -81,7 +80,7 @@ export default {
   data () {
     return {
       toastVisibility: false,
-      message: 'The password will be delete, do you wont continue?',
+      message: 'The password will be delete, do you want continue?',
       passwordToRemove: {}
     }
   },
