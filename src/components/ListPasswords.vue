@@ -81,7 +81,7 @@ export default {
   data () {
     return {
       toastVisibility: false,
-      message: 'The password will be delete, do you wont continue?',
+      message: 'The password will be delete, do you want continue?',
       passwordToRemove: {}
     }
   },
