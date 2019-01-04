@@ -56,7 +56,6 @@
         </div>
         <v-ons-alert-dialog modifier="rowfooter"
                             :visible.sync="toastVisibility">
-            <span slot="title">Title slots</span>
             {{message}}
             <template slot="footer">
                 <v-ons-alert-dialog-button @click="toastVisibility = false">Cancel</v-ons-alert-dialog-button>
