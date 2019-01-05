@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "docs:build": "vuepress build docs"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "http-server": "^0.11.1",
@@ -15,7 +14,6 @@
     "vue": "^2.5.16",
     "vue-onsenui": "^2.6.1",
     "vue-router": "^3.0.1",
-    "vuepress": "^0.14.8",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
