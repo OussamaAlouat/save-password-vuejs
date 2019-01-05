@@ -4,7 +4,7 @@ This application is used to save your passwords. So, first of all, I need to com
 The project is developed in vue, using vuex, to keep and save the data, and onsen.ui as a compoent library.
 
 
-Demo: https://oussamaalouat.github.io/
+Demo: https://oussamaalouat.github.io/save-password-vuejs/
 
 ## Project setup
 ```
