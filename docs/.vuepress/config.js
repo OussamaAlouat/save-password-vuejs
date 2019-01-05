@@ -1,3 +1,3 @@
 module.exports = {
-    base: '/'
+    base: '/save-password-vuejs/'
 }
