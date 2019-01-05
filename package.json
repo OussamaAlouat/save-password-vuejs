@@ -1,11 +1,12 @@
 {
   "name": "save-password",
-  "version": "2.12.0",
+  "version": "2.13.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "http-server": "^0.11.1",
@@ -14,6 +15,7 @@
     "vue": "^2.5.16",
     "vue-onsenui": "^2.6.1",
     "vue-router": "^3.0.1",
+    "vuepress": "^0.14.8",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
