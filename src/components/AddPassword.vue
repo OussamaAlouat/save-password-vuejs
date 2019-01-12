@@ -43,6 +43,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import uuid from 'uuid/v4'
 export default {
   name: 'AddPassword',
   data () {
@@ -73,7 +74,7 @@ export default {
       } else {
         const pass = { type: this.type, password: this.password }
         if (!this.isPresent(pass)) {
-          this.setPassword({ password: { password: pass.password, type: pass.type, id: this.getId() } })
+          this.setPassword({ password: { password: pass.password, type: pass.type, id: uuid() } })
           this.save()
           this.goBack()
         } else {
@@ -87,11 +88,6 @@ export default {
         val.password === password.password &&
                 val.type === password.type
       ).length > 0
-    },
-    getId () {
-      const id = (Math.ceil(Math.random() * (Math.floor(Math.random() * 99999999999999999999) + 100000 +
-          Math.ceil(Math.random() * Math.floor(Math.random() * 10000000000000)))))
-      return this.passwords.filter((val) => val.id === id).length > 0 ? this.getId() : id
     },
     getType () {
       return this.isVisible ? 'text' : 'password'
