@@ -1,5 +1,7 @@
 module.exports = {
-    baseUrl: process.env.NODE_ENV === 'production'
-        ? '/save-password-vuejs/'
-        : '/'
+    pwa: {
+        workboxOptions: {
+            skipWaiting: true
+        }
+    }
 }
