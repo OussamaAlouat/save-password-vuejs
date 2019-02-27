@@ -17,7 +17,6 @@ export default {
     ...mapGetters({
       'pageStack': 'getPageStack'
     })
-
   },
   methods: {
     ...mapActions(['pushPage', 'setAllPasswords'])

@@ -1,53 +1,47 @@
 <template>
-    <v-ons-page>
-        <v-ons-toolbar>
-            <div class="center">
-                Update Password
-            </div>
-        </v-ons-toolbar>
-        <v-ons-card>
-            <div>
-                Old password
-            </div>
-            <v-ons-input :type="getType()" class="textInput" readonly=""
-                         v-model="currentPassword.password"></v-ons-input>
-            <v-ons-button class="showButton" modifier="quiet"
-                          @click="changeVisibilityPassword()">
-                <v-ons-icon
-                        :icon="getIcon()"
-                        size="1.2rem, material:1rem">
-                </v-ons-icon>
-            </v-ons-button>
-
-            <div>
-                New password
-            </div>
-            <v-ons-input :type="getType()" class="textInput"
-                         v-model="password"></v-ons-input>
-
-            <div class="text">
-                Type of password
-            </div>
-            <v-ons-input placeholder="Facebook, twitter ..." readonly=""
-                         type="text"
-                         v-model="currentPassword.type">
-            </v-ons-input>
-        </v-ons-card>
-
-        <v-ons-button @click="update()">
-            Update
-        </v-ons-button>
-        <v-ons-button @click="cancel()" class="cancelButton">
-            Cancel
-        </v-ons-button>
-
-        <v-ons-toast
-                :visible.sync="toastVisibility" animation="ascend">
-            {{message}}
-            <button @click="toastVisibility = false">OK</button>
-        </v-ons-toast>
-
-    </v-ons-page>
+  <v-ons-page>
+    <v-ons-toolbar>
+      <div class="center">Update Password</div>
+    </v-ons-toolbar>
+    <v-ons-card>
+      <div>Old password</div>
+      <v-ons-input
+        :type="getType()" 
+        class="textInput" readonly=""
+        v-model="currentPassword.password">
+      </v-ons-input>
+      <v-ons-button
+        class="showButton" 
+        modifier="quiet"
+        @click="changeVisibilityPassword()">
+        <v-ons-icon
+          :icon="getIcon()"
+          size="1.2rem, material:1rem">
+        </v-ons-icon>
+      </v-ons-button>
+      <div>New password</div>
+      <v-ons-input
+        :type="getType()" 
+        class="textInput"
+        v-model="password">
+      </v-ons-input>
+      <div class="text">Type of password</div>
+      <v-ons-input 
+        placeholder="Facebook, twitter ..." 
+        readonly=""
+        type="text"
+        v-model="currentPassword.type">
+      </v-ons-input>
+    </v-ons-card>
+    <v-ons-button @click="update()">Update</v-ons-button>
+    <v-ons-button @click="cancel()" class="cancelButton">Cancel</v-ons-button>
+    <v-ons-toast
+      visible.sync="toastVisibility" 
+      animation="ascend">
+        {{message}}
+        <button @click="toastVisibility = false">OK</button>
+    </v-ons-toast>
+  </v-ons-page>
 </template>
 
 <script>
@@ -106,16 +100,15 @@ export default {
 }
 </script>
 <style scoped>
-    .textInput {
-        width: 13.5rem;
-    }
-    .showButton {
-        background: white !important;
-        background-color: white !important;
-    }
-    .cancelButton{
-        margin-left: 2.5rem !important;
-        background: red !important;
-    }
-
+  .textInput {
+      width: 13.5rem;
+  }
+  .showButton {
+    background: white !important;
+    background-color: white !important;
+  }
+  .cancelButton{
+    margin-left: 2.5rem !important;
+    background: red !important;
+  }
 </style>

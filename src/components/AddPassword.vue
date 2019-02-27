@@ -1,44 +1,39 @@
 <template>
-    <v-ons-page>
-        <v-ons-toolbar>
-            <div class="center">
-                Add password
-            </div>
-            <v-ons-back-button></v-ons-back-button>
-        </v-ons-toolbar>
-        <v-ons-card>
-            <div>
-                Password
-            </div>
-            <v-ons-input placeholder="Input your password" class="textInput"
-                         :type="getType()"
-            v-model="password"></v-ons-input>
-
-            <v-ons-button class="showButton" modifier="quiet"
-                          @click="changeVisibilityPassword()">
-                <v-ons-icon
-                        :icon="getIcon()"
-                        size="1.2rem, material:1rem">
-                </v-ons-icon>
-            </v-ons-button>
-
-            <div class="text">
-                Type of password
-            </div>
-            <v-ons-input placeholder="Facebook, twitter ..." class="textInput"
-                         type="text"
-                         v-model="type"></v-ons-input>
-        </v-ons-card>
-        <v-ons-button @click="addPassword()">
-            Save
-        </v-ons-button>
-        <v-ons-toast
-        :visible.sync="toastVisibility" animation="ascend">
-            {{message}}
-            <button @click="toastVisibility = false">OK</button>
-        </v-ons-toast>
-
-    </v-ons-page>
+  <v-ons-page>
+    <v-ons-toolbar>
+      <div class="center">Add password</div>
+      <v-ons-back-button></v-ons-back-button>
+    </v-ons-toolbar>
+    <v-ons-card>
+      <div>Password</div>
+      <v-ons-input 
+        placeholder="Input your password" 
+        class="textInput"
+        :type="getType()"
+        v-model="password">
+      </v-ons-input>
+      <v-ons-button 
+        class="showButton" 
+        modifier="quiet"
+        @click="changeVisibilityPassword()">
+        <v-ons-icon
+          :icon="getIcon()"
+          size="1.2rem, material:1rem">
+        </v-ons-icon>
+      </v-ons-button>
+      <div class="text">Type of password</div>
+      <v-ons-input
+        placeholder="Facebook, twitter ..." 
+        class="textInput"
+        type="text"
+        v-model="type">
+      </v-ons-input>
+    </v-ons-card>
+    <v-ons-button @click="addPassword()">Save</v-ons-button>
+    <v-ons-toast :visible.sync="toastVisibility" animation="ascend">{{message}}
+      <button @click="toastVisibility = false">OK</button>
+    </v-ons-toast>
+  </v-ons-page>
 </template>
 
 <script>
@@ -86,7 +81,7 @@ export default {
     isPresent (password) {
       return this.passwords.filter((val) =>
         val.password === password.password &&
-                val.type === password.type
+        val.type === password.type
       ).length > 0
     },
     getType () {
@@ -103,15 +98,14 @@ export default {
 </script>
 
 <style scoped>
-    .text{
-        margin-bottom: 1rem;;
-    }
-    .textInput {
-        width: 13em;
-    }
-    .showButton {
-        background: white !important;
-        background-color: white !important;
-    }
-
+  .text {
+    margin-bottom: 1rem;;
+  }
+  .textInput {
+     width: 13em;
+  }
+  .showButton {
+    background: white !important;
+    background-color: white !important;
+  }
 </style>
