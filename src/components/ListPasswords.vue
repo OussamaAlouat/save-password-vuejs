@@ -156,16 +156,19 @@ export default {
     color: red;
     background: white !important;
     background-color: white !important;
+    border-radius: 2rem;
   }
 
   .showButton {
     background: white !important;
     background-color: white !important;
+    border-radius: 2rem;
   }
 
   .editButton {
     background: white !important;
     background-color: white !important;
+    border-radius: 2rem;
   }
 
   .toastButtons{

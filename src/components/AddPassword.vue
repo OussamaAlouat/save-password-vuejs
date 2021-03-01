@@ -29,7 +29,7 @@
         v-model="type">
       </v-ons-input>
     </v-ons-card>
-    <v-ons-button @click="addPassword()">Save</v-ons-button>
+    <v-ons-button class="br" @click="addPassword()">Save</v-ons-button>
     <v-ons-toast :visible.sync="toastVisibility" animation="ascend">{{message}}
       <button @click="toastVisibility = false">OK</button>
     </v-ons-toast>
@@ -112,5 +112,8 @@ export default {
     border-radius: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+  .br{
+    border-radius: 2rem;
   }
 </style>
