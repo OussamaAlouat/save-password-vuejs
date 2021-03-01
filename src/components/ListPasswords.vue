@@ -10,9 +10,9 @@
       </span>
     </div>
     <div v-else>
-      <v-ons-list>
-        <v-ons-list-item v-for="(password, index) in passwords" :key="index">
-          <div class="left" style="width: 10rem">
+      <v-ons-list class="svpListContainer">
+        <v-ons-list-item modifier="nodivider" class="svpList" v-for="(password, index) in passwords" :key="index">
+          <div class="left">
             <span class="list-item__subtitle" style="line-height: 1.9rem !important;">
               {{ password.type }}
             </span>
@@ -139,40 +139,53 @@ export default {
 </script>
 
 <style scoped>
-    .tag:active {
-        background: darkgray;
-        opacity: 1;
-    }
+  .tag:active {
+    background: darkgray;
+    opacity: 1;
+  }
 
-    .tag {
-        margin-top: 2rem;
-        background: darkgray;
-        width: 14rem;
-        height: 6rem;
-        line-height: 5rem;
-    }
+  .tag {
+    margin-top: 2rem;
+    background: darkgray;
+    width: 14rem;
+    height: 6rem;
+    line-height: 5rem;
+  }
 
-    .removeButton {
-        color: red;
-        background: white !important;
-        background-color: white !important;
-    }
+  .removeButton {
+    color: red;
+    background: white !important;
+    background-color: white !important;
+  }
 
-    .showButton {
-        background: white !important;
-        background-color: white !important;
-    }
+  .showButton {
+    background: white !important;
+    background-color: white !important;
+  }
 
-    .editButton {
-        background: white !important;
-        background-color: white !important;
-    }
-    .toastButtons{
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-        color: black;
-        background: darkgray;
-        margin-top: 0.5rem;
-        text-align: center;
-    }
+  .editButton {
+    background: white !important;
+    background-color: white !important;
+  }
+
+  .toastButtons{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: black;
+    background: darkgray;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .svpList {
+    border-radius: 2rem;
+    margin-bottom: 0.5rem;
+    background-color: #80ced6;
+    margin-top: 0.5rem;
+  }
+  .svpListContainer{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: transparent !important;
+  }
 </style>
