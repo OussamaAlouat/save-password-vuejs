@@ -75,14 +75,15 @@ export default {
         this.message = 'The new password is empty'
         this.toastVisibility = true
         return false
-      } else {
-        if (this.currentPassword.password === this.password) {
-          this.message = 'The old password and the new password are the same'
-          this.toastVisibility = true
-          return false
-        }
-        return true
       }
+
+      if (this.currentPassword.password === this.password) {
+        this.message = 'The old password and the new password are the same'
+        this.toastVisibility = true
+        return false
+      }
+
+      return true
     },
     getType () {
       return this.isVisible ? 'text' : 'password'
