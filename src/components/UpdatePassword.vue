@@ -6,12 +6,12 @@
     <v-ons-card>
       <div>Old password</div>
       <v-ons-input
-        :type="getType()" 
+        :type="getType()"
         class="textInput" readonly=""
         v-model="currentPassword.password">
       </v-ons-input>
       <v-ons-button
-        class="showButton" 
+        class="showButton"
         modifier="quiet"
         @click="changeVisibilityPassword()">
         <v-ons-icon
@@ -21,13 +21,13 @@
       </v-ons-button>
       <div>New password</div>
       <v-ons-input
-        :type="getType()" 
+        :type="getType()"
         class="textInput"
         v-model="password">
       </v-ons-input>
       <div class="text">Type of password</div>
-      <v-ons-input 
-        placeholder="Facebook, twitter ..." 
+      <v-ons-input
+        placeholder="Facebook, twitter ..."
         readonly=""
         type="text"
         v-model="currentPassword.type">
@@ -36,7 +36,7 @@
     <v-ons-button @click="update()">Update</v-ons-button>
     <v-ons-button @click="cancel()" class="cancelButton">Cancel</v-ons-button>
     <v-ons-toast
-      visible.sync="toastVisibility" 
+      visible.sync="toastVisibility"
       animation="ascend">
         {{message}}
         <button @click="toastVisibility = false">OK</button>
