@@ -14,7 +14,7 @@
         <v-ons-list-item v-for="(password, index) in passwords" :key="index">
           <div class="left" style="width: 10rem">
             <span class="list-item__subtitle" style="line-height: 1.9rem !important;">
-              {{password.type}}
+              {{ password.type }}
             </span>
             <span class="list-item__subtitle">
               <v-ons-input :type="getType(password)" :value="password.password" readonly></v-ons-input>
@@ -23,8 +23,8 @@
           <div class="center">
             <v-ons-row>
               <v-ons-col width="4rem">
-                <v-ons-button 
-                  class="showButton" 
+                <v-ons-button
+                  class="showButton"
                   modifier="quiet"
                   @click="changeVisibilityPassword(password)">
                   <v-ons-icon
@@ -44,9 +44,9 @@
             </v-ons-row>
           </div>
           <div class="right">
-            <v-ons-button 
-              class="removeButton" 
-              modifier="quiet" 
+            <v-ons-button
+              class="removeButton"
+              modifier="quiet"
               @click="remove(password)">
               <v-ons-icon
                 icon="fa-trash"
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import AddPassword from './AddPassword.vue'
 import UpdatePassword from './UpdatePassword.vue'
 
@@ -124,14 +124,14 @@ export default {
       this.showRemoveConfirmation()
     },
     updatePassword (password) {
-      this.setCurrentPassword({password: password})
-      this.pushPage({page: UpdatePassword})
+      this.setCurrentPassword({ password: password })
+      this.pushPage({ page: UpdatePassword })
     },
     showRemoveConfirmation () {
       this.toastVisibility = true
     },
     confirm () {
-      this.removePassword({password: this.passwordToRemove})
+      this.removePassword({ password: this.passwordToRemove })
       this.toastVisibility = false
     }
   }
