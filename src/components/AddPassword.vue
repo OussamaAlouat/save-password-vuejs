@@ -4,7 +4,7 @@
       <div class="center">Add password</div>
       <v-ons-back-button></v-ons-back-button>
     </v-ons-toolbar>
-    <v-ons-card>
+    <v-ons-card class="svpCard">
       <div>Password</div>
       <v-ons-input
         placeholder="Input your password"
@@ -99,13 +99,18 @@ export default {
 
 <style scoped>
   .text {
-    margin-bottom: 1rem;;
+    margin-bottom: 1rem;
   }
   .textInput {
-     width: 13em;
+     width: 90%;
   }
   .showButton {
     background: white !important;
     background-color: white !important;
+  }
+  .svpCard {
+    border-radius: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 </style>
