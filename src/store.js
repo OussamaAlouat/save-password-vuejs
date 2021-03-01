@@ -39,7 +39,6 @@ export default new Vuex.Store({
       state.pageStack.pop()
     },
     setCurrentPassword (state, password) {
-      console.log(password)
       state.currentPassword = password
     },
     updatePassword (state, password) {
@@ -59,7 +58,6 @@ export default new Vuex.Store({
     },
     setAllPasswords (state) {
       const data = JSON.parse(localStorage.getItem('passwords'))
-      console.log(data)
       if (data !== null) state.passwords = data
     }
 
