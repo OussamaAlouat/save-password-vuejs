@@ -6,14 +6,14 @@
     </v-ons-toolbar>
     <v-ons-card>
       <div>Password</div>
-      <v-ons-input 
-        placeholder="Input your password" 
+      <v-ons-input
+        placeholder="Input your password"
         class="textInput"
         :type="getType()"
         v-model="password">
       </v-ons-input>
-      <v-ons-button 
-        class="showButton" 
+      <v-ons-button
+        class="showButton"
         modifier="quiet"
         @click="changeVisibilityPassword()">
         <v-ons-icon
@@ -23,7 +23,7 @@
       </v-ons-button>
       <div class="text">Type of password</div>
       <v-ons-input
-        placeholder="Facebook, twitter ..." 
+        placeholder="Facebook, twitter ..."
         class="textInput"
         type="text"
         v-model="type">
