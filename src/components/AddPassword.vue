@@ -4,7 +4,7 @@
       <div class="center">Add password</div>
       <v-ons-back-button></v-ons-back-button>
     </v-ons-toolbar>
-    <v-ons-card class="svpCard">
+    <v-ons-card class="svpCard svpCardMargins">
       <div>Password</div>
       <v-ons-input
         placeholder="Input your password"
@@ -13,7 +13,7 @@
         v-model="password">
       </v-ons-input>
       <v-ons-button
-        class="showButton"
+        class="btn"
         modifier="quiet"
         @click="changeVisibilityPassword()">
         <v-ons-icon
@@ -104,16 +104,5 @@ export default {
   .textInput {
      width: 85%;
   }
-  .showButton {
-    background: white !important;
-    background-color: white !important;
-  }
-  .svpCard {
-    border-radius: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-  .br{
-    border-radius: 2rem;
   }
 </style>
