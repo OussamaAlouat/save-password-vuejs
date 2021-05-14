@@ -10,8 +10,8 @@
       </span>
     </div>
     <div v-else>
-      <v-ons-list class="svpListContainer">
-        <v-ons-list-item modifier="nodivider" class="svpList" v-for="(password, index) in passwords" :key="index">
+      <v-ons-list class="svpListContainer svpCardMargins">
+        <v-ons-list-item modifier="nodivider" class="svpCard" v-for="(password, index) in passwords" :key="index">
           <div class="left" id="phone">
             <span class="list-item__subtitle" style="line-height: 1.9rem !important;">
               {{ password.type }}
@@ -24,7 +24,7 @@
             <v-ons-row>
               <v-ons-col width="4rem">
                 <v-ons-button
-                  class="showButton"
+                  class="btn"
                   modifier="quiet"
                   @click="changeVisibilityPassword(password)"
                 >
@@ -35,7 +35,7 @@
                 </v-ons-button>
               </v-ons-col>
               <v-ons-col width="2rem">
-                <v-ons-button modifier="quiet" class="editButton"  @click="updatePassword(password)">
+                <v-ons-button modifier="quiet" class="btn"  @click="updatePassword(password)">
                   <v-ons-icon
                     icon="fa-pencil"
                     size="1.1rem, material:1rem">
@@ -46,7 +46,7 @@
           </div>
           <div class="right">
             <v-ons-button
-              class="removeButton"
+              class=" btn removeButton"
               modifier="quiet"
               @click="remove(password)">
               <v-ons-icon
@@ -156,21 +156,6 @@ export default {
 
   .removeButton {
     color: red;
-    background: white !important;
-    background-color: white !important;
-    border-radius: 2rem;
-  }
-
-  .showButton {
-    background: white !important;
-    background-color: white !important;
-    border-radius: 2rem;
-  }
-
-  .editButton {
-    background: white !important;
-    background-color: white !important;
-    border-radius: 2rem;
   }
 
   .toastButtons{
@@ -182,15 +167,7 @@ export default {
     text-align: center;
   }
 
-  .svpList {
-    border-radius: 2rem;
-    margin-bottom: 0.5rem;
-    background-color: #80ced6;
-    margin-top: 0.5rem;
-  }
   .svpListContainer{
-    margin-left: 1rem;
-    margin-right: 1rem;
     background: transparent !important;
   }
 
