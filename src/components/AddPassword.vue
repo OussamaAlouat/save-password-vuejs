@@ -102,7 +102,7 @@ export default {
     margin-bottom: 1rem;
   }
   .textInput {
-     width: 90%;
+     width: 85%;
   }
   .showButton {
     background: white !important;
