@@ -1,0 +1,23 @@
+:root {
+  --main-color:  #80ced6;
+}
+.btn {
+  background: white !important;
+  background-color: white !important;
+  border-radius: 2rem;
+}
+.svpCard {
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--main-color);;
+  margin-top: 0.5rem;
+}
+
+.svpCardMargins {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.br{
+  border-radius: 2rem;
+}
