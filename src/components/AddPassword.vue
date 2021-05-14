@@ -4,7 +4,7 @@
       <div class="center">Add password</div>
       <v-ons-back-button></v-ons-back-button>
     </v-ons-toolbar>
-    <v-ons-card>
+    <v-ons-card class="svpCard svpCardMargins">
       <div>Password</div>
       <v-ons-input
         placeholder="Input your password"
@@ -13,7 +13,7 @@
         v-model="password">
       </v-ons-input>
       <v-ons-button
-        class="showButton"
+        class="btn"
         modifier="quiet"
         @click="changeVisibilityPassword()">
         <v-ons-icon
@@ -29,7 +29,7 @@
         v-model="type">
       </v-ons-input>
     </v-ons-card>
-    <v-ons-button @click="addPassword()">Save</v-ons-button>
+    <v-ons-button class="br" @click="addPassword()">Save</v-ons-button>
     <v-ons-toast :visible.sync="toastVisibility" animation="ascend">{{message}}
       <button @click="toastVisibility = false">OK</button>
     </v-ons-toast>
@@ -99,13 +99,15 @@ export default {
 
 <style scoped>
   .text {
-    margin-bottom: 1rem;;
+    margin-bottom: 1rem;
   }
   .textInput {
-     width: 13em;
+     width: 90%;
   }
-  .showButton {
-    background: white !important;
-    background-color: white !important;
+
+  @media only screen and (max-width: 600px) {
+    .textInput {
+      width: 85% !important;
+    }
   }
 </style>

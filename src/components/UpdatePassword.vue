@@ -3,7 +3,7 @@
     <v-ons-toolbar>
       <div class="center">Update Password</div>
     </v-ons-toolbar>
-    <v-ons-card>
+    <v-ons-card class="svpCard svpCardMargins">
       <div>Old password</div>
       <v-ons-input
         :type="getType()"
@@ -11,7 +11,7 @@
         v-model="currentPassword.password">
       </v-ons-input>
       <v-ons-button
-        class="showButton"
+        class="btn"
         modifier="quiet"
         @click="changeVisibilityPassword()">
         <v-ons-icon
@@ -33,8 +33,8 @@
         v-model="currentPassword.type">
       </v-ons-input>
     </v-ons-card>
-    <v-ons-button @click="update()">Update</v-ons-button>
-    <v-ons-button @click="cancel()" class="cancelButton">Cancel</v-ons-button>
+    <v-ons-button class="br" @click="update()">Update</v-ons-button>
+    <v-ons-button @click="cancel()" class="cancelButton br">Cancel</v-ons-button>
     <v-ons-toast
       visible.sync="toastVisibility"
       animation="ascend">
@@ -104,10 +104,7 @@ export default {
   .textInput {
       width: 13.5rem;
   }
-  .showButton {
-    background: white !important;
-    background-color: white !important;
-  }
+
   .cancelButton{
     margin-left: 2.5rem !important;
     background: red !important;
