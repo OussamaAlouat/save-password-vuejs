@@ -8,7 +8,7 @@ import 'onsenui/css/onsen-css-components.css'
 
 // JS import
 import VueOnsen from 'vue-onsenui'
-import('./assets/styles/common.css')
+import './assets/styles/common.css'
 
 Vue.config.productionTip = false
 
