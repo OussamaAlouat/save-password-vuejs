@@ -102,7 +102,12 @@ export default {
     margin-bottom: 1rem;
   }
   .textInput {
-     width: 85%;
+     width: 90%;
   }
+
+  @media only screen and (max-width: 600px) {
+    .textInput {
+      width: 85% !important;
+    }
   }
 </style>
