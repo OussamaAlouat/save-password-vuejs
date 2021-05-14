@@ -12,7 +12,7 @@
     <div v-else>
       <v-ons-list class="svpListContainer">
         <v-ons-list-item modifier="nodivider" class="svpList" v-for="(password, index) in passwords" :key="index">
-          <div class="left">
+          <div class="left" id="phone">
             <span class="list-item__subtitle" style="line-height: 1.9rem !important;">
               {{ password.type }}
             </span>
@@ -26,7 +26,8 @@
                 <v-ons-button
                   class="showButton"
                   modifier="quiet"
-                  @click="changeVisibilityPassword(password)">
+                  @click="changeVisibilityPassword(password)"
+                >
                   <v-ons-icon
                     :icon="getIcon(password)"
                     size="1.2rem, material:1rem">
@@ -114,6 +115,7 @@ export default {
       if (item.visibility === true) {
         return 'text'
       }
+
       return 'password'
     },
     goToAddPassword () {
@@ -191,4 +193,11 @@ export default {
     margin-right: 1rem;
     background: transparent !important;
   }
+
+  @media only screen and (max-width: 600px) {
+    #phone{
+      width: 10rem !important;
+    }
+  }
+
 </style>
