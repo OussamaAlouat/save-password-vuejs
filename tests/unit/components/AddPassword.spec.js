@@ -50,5 +50,74 @@ describe('AddPassword.vue', () => {
     wrapper.vm.$nextTick();
     expect(actions.setPassword).toHaveBeenCalled()
   });
+  it('On set an empty password and empty type will be appear an error message', () => {
+    const wrapper = shallowMount(AddPassword, {
+      localVue,
+      store
+    })
 
+    wrapper.vm.addPassword();
+    wrapper.vm.$nextTick();
+    expect(wrapper.vm.message).toEqual('The password and the type are empty!')
+  });
+
+  it('On set an empty password but not empty type will be appear an error message', () => {
+    const wrapper = shallowMount(AddPassword, {
+      localVue,
+      store
+    })
+
+    wrapper.setData({
+      type: 'Facebook'
+    });
+
+    wrapper.vm.addPassword();
+    wrapper.vm.$nextTick();
+    expect(wrapper.vm.message).toEqual('The password is empty')
+  });
+  it('On set an empty type but not empty password will be appear an error message', () => {
+    const wrapper = shallowMount(AddPassword, {
+      localVue,
+      store
+    })
+
+    wrapper.setData({
+      password: '1234'
+    });
+
+    wrapper.vm.addPassword();
+    wrapper.vm.$nextTick();
+    expect(wrapper.vm.message).toEqual('The type is empty')
+  });
+
+  it('On set a password that already it is, will be appear an error message', () => {
+    getters = {
+      getTypes: () => ['Facebook', 'Gmail', 'Instagram'],
+      getPasswords: () => [{
+        password: '12345',
+        type: 'Facebook',
+        visibility: false,
+        id: 'id'
+      }]
+    }
+
+    store = new Vuex.Store({
+      getters,
+      actions
+    })
+
+    const wrapper = shallowMount(AddPassword, {
+      localVue,
+      store
+    })
+
+    wrapper.setData({
+      password: '12345',
+      type: 'Facebook'
+    });
+
+    wrapper.vm.addPassword();
+    wrapper.vm.$nextTick();
+    expect(wrapper.vm.message).toEqual('This password is already present on your passwords list')
+  })
 });
