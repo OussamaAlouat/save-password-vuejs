@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit --coverage",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -24,8 +25,10 @@
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-plugin-pwa": "^3.12.1",
+    "@vue/cli-plugin-unit-jest": "^4.5.15",
     "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-standard": "^3.0.0-rc.10",
+    "@vue/test-utils": "^1.0.3",
     "vue-template-compiler": "^2.6.12"
   },
   "postcss": {
