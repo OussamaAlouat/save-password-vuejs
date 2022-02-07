@@ -34,7 +34,11 @@ export default {
   },
 
   setCurrentPassword (state, password) {
-    state.currentPassword = password
+    if (password === undefined) {
+      state.currentPassword = {}
+    } else {
+      state.currentPassword = password
+    }
   },
 
   updatePassword (state, password) {
@@ -44,8 +48,10 @@ export default {
         val.password = password.password
         val.type = password.type
       }
+  
       return val
     })
+
     localStorage.removeItem('passwords')
     localStorage.setItem('passwords', JSON.stringify(state.passwords))
   },
