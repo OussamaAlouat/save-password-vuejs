@@ -49,7 +49,7 @@ export default {
           val.password = password.password
           val.type = password.type
         }
-    
+
         return val
       })
 
