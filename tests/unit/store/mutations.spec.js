@@ -101,4 +101,41 @@ describe('Mutations', () => {
     expect(state.passwords).toHaveLength(1);
     expect(state.passwords[0].visibility).toBeFalsy()
   });
+
+  it('goBack runs ok', () => {
+    const state = {
+      pageStack: ['AddVue'],
+    }
+
+    Mutations.goBack(state);
+
+    expect(state.pageStack).toHaveLength(0);
+  });
+
+  it('goBack runs ok when pageStack no have pages', () => {
+    const state = {
+      pageStack: [],
+    }
+
+    Mutations.goBack(state);
+
+    expect(state.pageStack).toHaveLength(0);
+  });
+
+  it('setCurrentPassword rund ok', () => {
+    const state = {
+      currentPassword: {}
+    }
+
+    const password = {
+      password: '12345',
+      type: 'Facebook',
+      visibility: false,
+      id: 'id'
+    }
+
+    Mutations.setCurrentPassword(state, password)
+
+    expect(state.currentPassword).toEqual(password);
+  });
 })
