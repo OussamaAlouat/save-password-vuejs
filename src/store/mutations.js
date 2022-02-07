@@ -13,12 +13,14 @@ export default {
       id: data.id
     })
   },
+
   removePassword (state, password) {
     const passwords = state.passwords.filter((val) => val.id !== password.id)
     state.passwords = passwords.slice()
     localStorage.removeItem('passwords')
     localStorage.setItem('passwords', JSON.stringify(state.passwords))
   },
+
   changeVisibility (state, password) {
     state.passwords.forEach((val) => {
       if (val.id === password.id) {
@@ -26,12 +28,15 @@ export default {
       }
     })
   },
+
   goBack (state) {
     state.pageStack.pop()
   },
+
   setCurrentPassword (state, password) {
     state.currentPassword = password
   },
+
   updatePassword (state, password) {
     const copy = state.passwords.slice()
     state.passwords = copy.map((val) => {
@@ -44,9 +49,11 @@ export default {
     localStorage.removeItem('passwords')
     localStorage.setItem('passwords', JSON.stringify(state.passwords))
   },
+
   save (state) {
     localStorage.setItem('passwords', JSON.stringify(state.passwords))
   },
+
   setAllPasswords (state) {
     const data = JSON.parse(localStorage.getItem('passwords'))
     if (data !== null) state.passwords = data
