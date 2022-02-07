@@ -42,18 +42,20 @@ export default {
   },
 
   updatePassword (state, password) {
-    const copy = state.passwords.slice()
-    state.passwords = copy.map((val) => {
-      if (state.currentPassword.id === val.id) {
-        val.password = password.password
-        val.type = password.type
-      }
-  
-      return val
-    })
+    if (password !== null && password !== undefined) {
+      const copy = state.passwords.slice()
+      state.passwords = copy.map((val) => {
+        if (state.currentPassword.id === val.id) {
+          val.password = password.password
+          val.type = password.type
+        }
+    
+        return val
+      })
 
-    localStorage.removeItem('passwords')
-    localStorage.setItem('passwords', JSON.stringify(state.passwords))
+      localStorage.removeItem('passwords')
+      localStorage.setItem('passwords', JSON.stringify(state.passwords))
+    }
   },
 
   save (state) {
