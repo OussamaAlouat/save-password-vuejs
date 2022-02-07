@@ -135,7 +135,153 @@ describe('Mutations', () => {
     }
 
     Mutations.setCurrentPassword(state, password)
-
     expect(state.currentPassword).toEqual(password);
+  });
+
+  it('setCurrentPassword (recived null) rund ok', () => {
+    const state = {
+      currentPassword: {}
+    }
+
+    Mutations.setCurrentPassword(state, null)
+    expect(state.currentPassword).toBeNull();
+  });
+
+
+  it('setCurrentPassword, when recive undefined, it will set empty object', () => {
+    const state = {
+      currentPassword: {}
+    }
+
+    Mutations.setCurrentPassword(state, undefined)
+    expect(state.currentPassword).toEqual({});
+  });
+
+  it('updatePassword runs ok', () => {
+    const state = {
+      currentPassword: {
+        password: '12353',
+        type: 'SWEET',
+        visibility: true,
+        id: 'id'
+      },
+      passwords: [
+        {
+          password: '12346',
+          type: 'Facebook',
+          visibility: true,
+          id: 'id1'
+        },
+        {
+          password: '12345',
+          type: 'Facebook',
+          visibility: true,
+          id: 'id'
+        }
+      ]
+    };
+
+    const newPassword = {
+      password: '12353',
+      type: 'SWEET',
+      visibility: true,
+      id: 'id'
+    }
+    Mutations.updatePassword(state, newPassword);
+    const find = state.passwords.find((o) => o.id === 'id')
+    expect(find).toEqual(newPassword);
+    
+  })
+
+  it ('updatePassword when recives null, not update nothing', () => {
+    const passwords = [
+      {
+        password: '12346',
+        type: 'Facebook',
+        visibility: true,
+        id: 'id1'
+      },
+      {
+        password: '12345',
+        type: 'Facebook',
+        visibility: true,
+        id: 'id'
+      }
+    ]
+    const state = {
+      currentPassword: {
+        password: '12353',
+        type: 'SWEET',
+        visibility: true,
+        id: 'id'
+      },
+      passwords: [
+        ...passwords
+      ]
+    };
+
+    Mutations.updatePassword(state, null);
+    const find = state.passwords.find((o) => o.id === 'id')
+    expect(find).toEqual(passwords[1]);
+  })
+
+  it ('updatePassword when recives undefined, not update nothing', () => {
+    const passwords = [
+      {
+        password: '12346',
+        type: 'Facebook',
+        visibility: true,
+        id: 'id1'
+      },
+      {
+        password: '12345',
+        type: 'Facebook',
+        visibility: true,
+        id: 'id'
+      }
+    ]
+    const state = {
+      currentPassword: {
+        password: '12353',
+        type: 'SWEET',
+        visibility: true,
+        id: 'id'
+      },
+      passwords: [
+        ...passwords
+      ]
+    };
+
+    Mutations.updatePassword(state, undefined);
+    const find = state.passwords.find((o) => o.id === 'id')
+    expect(find).toEqual(passwords[1]);
+  });
+
+  it('save runs ok', () => {
+    const state = {
+      currentPassword: {
+        password: '12353',
+        type: 'SWEET',
+        visibility: true,
+        id: 'id'
+      },
+      passwords: [
+        {
+          password: '12346',
+          type: 'Facebook',
+          visibility: true,
+          id: 'id1'
+        },
+        {
+          password: '12345',
+          type: 'Facebook',
+          visibility: true,
+          id: 'id'
+        }
+      ]
+    };
+    jest.spyOn(window.localStorage.__proto__, 'setItem')
+    Mutations.save(state);
+    expect(window.localStorage.__proto__.setItem).toHaveBeenCalled()
   });
 })
